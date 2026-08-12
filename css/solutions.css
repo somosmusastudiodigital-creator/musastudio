@@ -53,8 +53,13 @@
     gap: 14px;
   }
 
+  .solutions__wordmark {
+    font-size: 44px;
+  }
+
   .solutions__lead {
-    font-size: 15px;
+    font-size: 14px;
+    font-weight: 400;
     max-width: 26ch;
   }
 }
