@@ -1,0 +1,60 @@
+/* ==========================================================================
+   Sección "Soluciones a medida" — franja simple entre testimonios y cierre.
+   Fondo color base, todo centrado en el mismo eje: frase → wordmark → tag.
+   Mismo diseño en todas las pantallas.
+   ========================================================================== */
+
+.solutions {
+  background-color: var(--color-bg);
+  padding-block: 90px;
+  padding-inline: var(--container-padding);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+.solutions__lead {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--color-text);
+  max-width: 40ch;
+}
+
+.solutions__wordmark {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(32px, 6vw, 72px);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--color-text);
+}
+
+.solutions__tag {
+  font-family: var(--font-body);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.55;
+  color: var(--color-text);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 767px) {
+  .solutions {
+    padding-block: 56px;
+    padding-inline: var(--container-padding-mobile);
+    gap: 14px;
+  }
+
+  .solutions__lead {
+    font-size: 15px;
+    max-width: 26ch;
+  }
+}
