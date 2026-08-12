@@ -218,5 +218,7 @@
 
   .contact-modal__watermark {
     font-size: 15vw;
+    /* se oculta el texto pero se mantiene el espacio que ocupa */
+    visibility: hidden;
   }
 }

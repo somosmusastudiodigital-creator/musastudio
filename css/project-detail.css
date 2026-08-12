@@ -338,6 +338,11 @@
 @media (max-width: 767px) {
   .project-detail__grid {
     flex-direction: column;
+    /* clave: sin esto, los paneles/capítulos que el JS mueve a ser hijos
+       directos de .grid se encogen a su contenido (heredan align-items:
+       flex-start del row de desktop) y todo lo que adentro depende de un
+       ancho en % (el carrusel, las imágenes) colapsa o se desalinea */
+    align-items: stretch;
   }
 
   .project-detail__info {
