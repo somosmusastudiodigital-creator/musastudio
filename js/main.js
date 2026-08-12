@@ -58,7 +58,8 @@ document.addEventListener('touchstart', function () {}, { passive: true });
 })();
 
 /* ==========================================================================
-   Video del hero — refuerzo de autoplay para mobile.
+   Videos con autoplay (hero de Home, videos de las páginas de proyecto) —
+   refuerzo de autoplay para mobile.
    Con autoplay+muted+playsinline el video debería arrancar solo, pero
    algunos navegadores (modo bajo consumo de iOS, ahorro de datos, etc.)
    igual lo bloquean y muestran el botón de play. Si eso pasa, intentamos
@@ -68,20 +69,20 @@ document.addEventListener('touchstart', function () {}, { passive: true });
 (function () {
   'use strict';
 
-  const video = document.querySelector('.hero__video');
-  if (!video) return;
+  const videos = [...document.querySelectorAll('video[autoplay]')];
+  if (!videos.length) return;
 
-  const tryPlay = () => video.play().catch(() => {});
+  const tryPlayAll = () => videos.forEach((v) => v.play().catch(() => {}));
 
-  tryPlay();
+  tryPlayAll();
 
   const retryOnInteraction = () => {
-    tryPlay();
+    tryPlayAll();
     document.removeEventListener('touchstart', retryOnInteraction);
     document.removeEventListener('click', retryOnInteraction);
   };
 
-  if (video.paused) {
+  if (videos.some((v) => v.paused)) {
     document.addEventListener('touchstart', retryOnInteraction, { once: true, passive: true });
     document.addEventListener('click', retryOnInteraction, { once: true });
   }

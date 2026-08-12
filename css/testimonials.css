@@ -154,4 +154,8 @@
   .testimonials__machine {
     margin-top: 70px;
   }
+
+  .testimonials__hint {
+    margin-top: -46px;
+  }
 }

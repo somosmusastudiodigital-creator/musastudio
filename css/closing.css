@@ -132,6 +132,50 @@
   }
 
   .closing__footer {
+    justify-content: center;
+    text-align: center;
     padding-block: 18px;
+  }
+
+  /* la ubicación no va en mobile — el copyright queda solo y se centra */
+  .closing__location {
+    display: none;
+  }
+
+  /* "volver arriba" flota fijo sobre la pantalla, cerca del pulgar
+     derecho, en vez de vivir adentro de la franja */
+  .closing__totop {
+    position: fixed;
+    right: 18px;
+    bottom: 22px;
+    z-index: 900;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    background-color: rgba(26, 26, 26, 0.92);
+    border: none;
+    border-radius: 14px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+    text-decoration: none;
+  }
+
+  .closing__totop-label {
+    display: none;
+  }
+
+  /* chevron dibujado en CSS en vez de la flecha de texto: no depende de
+     ninguna fuente ni corre riesgo de salir como emoji */
+  .closing__totop-icon {
+    display: none;
+  }
+
+  .closing__totop::after {
+    content: '';
+    width: 9px;
+    height: 9px;
+    border-top: 2px solid var(--color-bg);
+    border-right: 2px solid var(--color-bg);
+    transform: rotate(-45deg);
+    margin-top: 3px;
   }
 }

@@ -251,6 +251,7 @@
     grid-area: desc;
     white-space: normal;
     text-align: left;
+    color: var(--color-bg);
     opacity: 0.8;
   }
 

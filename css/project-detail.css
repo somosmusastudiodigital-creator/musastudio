@@ -373,22 +373,8 @@
     padding-top: 0;
   }
 
-  /* "Hilo" mobile: en vez de "todo el texto, después todo el contenido",
-     cada bloque de texto acompaña al contenido que le corresponde antes
-     de pasar al siguiente. .project-detail__info y __media dejan de ser
-     cajas (display:contents) y sus paneles/capítulos se intercalan acá
-     como items directos de .project-detail__grid, usando el mismo
-     data-panel/data-chapter que ya usa el JS para el desktop. Funciona
-     igual con 1, 2 o 3 pares (Hache solo tiene uno, por ejemplo). */
-  .project-detail__info,
-  .project-detail__media {
-    display: contents;
-  }
-
-  .project-detail__panel[data-panel="0"] { order: 1; }
-  .project-detail__chapter[data-chapter="0"] { order: 2; }
-  .project-detail__panel[data-panel="1"] { order: 3; }
-  .project-detail__chapter[data-chapter="1"] { order: 4; }
-  .project-detail__panel[data-panel="2"] { order: 5; }
-  .project-detail__chapter[data-chapter="2"] { order: 6; }
+  /* El "hilo" (texto → su contenido → siguiente texto → su contenido) se
+     arma con JS moviendo los elementos reales en el DOM (ver
+     js/project-thread.js) — display:contents tenía bugs en Safari/iOS
+     justo con los carruseles (contenido posicionado absoluto adentro). */
 }
