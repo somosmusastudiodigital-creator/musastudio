@@ -169,6 +169,28 @@
   justify-content: center;
 }
 
+/* El manifiesto va detrás del wordmark, en el mismo lugar centrado —
+   misma estética que los tags [ MUSA STUDIO... ] / [ ESTADO/PROCESO... ]
+   que lo rodean: Montserrat, chico, tracked, mayúsculas, opacidad baja. */
+.manifesto__body {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 56ch;
+  margin-inline: auto;
+  padding-inline: 24px;
+  font-family: var(--font-body);
+  font-size: 10px;
+  line-height: 1.9;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: center;
+  opacity: 0.45;
+}
+
 .manifesto__wordmark {
   position: relative;
   z-index: 2;
