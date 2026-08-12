@@ -368,6 +368,11 @@
     width: 80%;
   }
 
+  /* Kaiobluerose: el carrusel de logos no va en mobile */
+  .project-carousel--hide-mobile {
+    display: none;
+  }
+
   .project-detail__media {
     width: 100%;
     padding-top: 0;
