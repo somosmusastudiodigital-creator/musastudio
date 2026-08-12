@@ -1,0 +1,39 @@
+/* ==========================================================================
+   Hero — sección de video a pantalla completa
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  overflow: hidden;
+  background-color: var(--color-text); /* se ve mientras carga el video */
+}
+
+.hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Texto/alt de respaldo si el navegador no reproduce video */
+.hero__fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-bg);
+  font-family: var(--font-body);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 767px) {
+  .hero {
+    height: 100svh;
+  }
+}

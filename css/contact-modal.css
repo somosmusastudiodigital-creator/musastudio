@@ -1,0 +1,222 @@
+/* ==========================================================================
+   Burbuja de contacto — se abre al clickear "Contact" en el navbar, en
+   cualquier página. No bloquea ni oscurece la página: sigue siendo
+   scrolleable/usable detrás. Se cierra solo con el botón X.
+   Tamaño fijo: 60% del ancho de pantalla, 40% del alto.
+   ========================================================================== */
+
+.contact-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  /* sin backdrop que bloquee: la burbuja no capta clicks fuera de sí misma */
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease-default), visibility 0s linear 0.3s;
+}
+
+.contact-modal.is-open {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.3s var(--ease-default);
+}
+
+.contact-modal__panel {
+  position: relative;
+  pointer-events: auto;
+  margin: auto;
+  width: 60vw;
+  height: 40vh;
+  min-width: 320px;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  container-type: inline-size;
+  /* blanco liso con 70% de opacidad — sin textura ni rayado */
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(var(--color-text-rgb), 0.25);
+  padding: 28px 32px 0;
+  transform: translateY(16px);
+  transition: transform 0.35s var(--ease-default);
+}
+
+.contact-modal.is-open .contact-modal__panel {
+  transform: translateY(0);
+}
+
+.contact-modal__close {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text);
+  background-color: transparent;
+  line-height: 1;
+  transition: opacity 0.2s var(--ease-default);
+}
+
+.contact-modal__close:hover {
+  opacity: 0.6;
+}
+
+.contact-modal__grid {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  /* space-between (no space-evenly): la columna izquierda debe quedar
+     pegada al borde real del padding — igual que "contact us" — así que
+     el aire para que "Social" no toque el margen derecho se agrega aparte,
+     con padding-right, en vez de mover también la columna izquierda. */
+  justify-content: space-between;
+  gap: 32px;
+  padding-right: 28px;
+}
+
+.contact-modal__col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contact-modal__col--right {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.contact-modal__brand {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.contact-modal__r {
+  font-family: var(--font-body);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-text);
+}
+
+.contact-modal__mark {
+  /* más grande que el "®" a propósito — el archivo ya viene en negro, sin
+     necesidad de filtro */
+  height: 48px;
+  width: auto;
+}
+
+.contact-modal__est {
+  margin-top: 4px;
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.contact-modal__address {
+  font-family: var(--font-body);
+  font-style: normal;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.contact-modal__label {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  margin-bottom: 2px;
+  color: var(--color-text);
+}
+
+.contact-modal__col a.contact-modal__phone {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.contact-modal__col a.contact-modal__email {
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--color-text);
+  opacity: 0.85;
+}
+
+.contact-modal__social-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.contact-modal__social {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.contact-modal__social:hover,
+.contact-modal__phone:hover,
+.contact-modal__email:hover {
+  opacity: 0.6;
+}
+
+/* Behance: todavía no tenemos el link — se ve pero no es clickeable */
+.contact-modal__social--soon {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* "contact us" — la única palabra en Bootzy, ocupa el ancho del cuadro.
+   cqw = relativo al ancho del panel, no del viewport. */
+.contact-modal__watermark {
+  flex-shrink: 0;
+  line-height: 0.78;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 15cqw;
+  color: rgba(var(--color-text-rgb), 0.35);
+  white-space: nowrap;
+  user-select: none;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 767px) {
+  .contact-modal__panel {
+    width: 92vw;
+    height: auto;
+    max-height: 84vh;
+    overflow-y: auto;
+    padding: 24px 20px 0;
+  }
+
+  .contact-modal__grid {
+    flex: none;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .contact-modal__col--right {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .contact-modal__watermark {
+    font-size: 15vw;
+  }
+}

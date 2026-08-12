@@ -1,0 +1,11 @@
+/* ==========================================================================
+   MUSA STUDIO — reglas globales de layout
+   Los parciales (variables, reset, base, navbar, hero, manifesto) se linkean
+   por separado en index.html, en ese orden, para evitar el costo de @import.
+   Este archivo va último: acá van únicas reglas que cruzan varias secciones.
+   ========================================================================== */
+
+main {
+  display: block;
+}
+

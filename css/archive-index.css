@@ -1,0 +1,263 @@
+/* ==========================================================================
+   Archive — índice de últimos proyectos destacados
+   Toda la sección es negra (#1a1a1a) con esquinas superiores curvas —
+   sube por encima del límite del manifiesto (margin-top negativo) para que
+   la textura de papel se vea de fondo justo en el huequito que deja la
+   curva, fusionando ambas secciones sin corte duro. El panel amarillo +
+   lista quedan "flotando" con aire negro alrededor, no pegados al borde.
+   ========================================================================== */
+
+.archive-index {
+  position: relative;
+  z-index: 1;
+  background-color: var(--color-text);
+  /* radio elíptico: horizontal bien abierto / vertical bajo, para que la
+     curva se estire a lo ancho en vez de ser un cuarto de círculo apretado
+     en la punta. Sintaxis: <radios-horizontales> / <radios-verticales>. */
+  border-radius: 220px 220px 0 0 / 44px 44px 0 0;
+  overflow: hidden;
+  margin-top: -44px;
+  padding: 160px var(--container-padding) 140px;
+}
+
+.archive-index__panel {
+  display: grid;
+  grid-template-columns: minmax(220px, 300px) 1fr;
+  max-width: 1040px;
+  margin-inline: auto;
+}
+
+/* ---- Panel izquierdo: "archive" ---- */
+
+.archive-index__left {
+  background-color: var(--color-accent);
+  border: 1px solid var(--color-border-muted);
+  border-radius: 32px 0 0 0;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 48px;
+  min-height: 320px;
+}
+
+.archive-index__label {
+  font-family: var(--font-body);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  opacity: 0.6;
+  max-width: 15ch;
+}
+
+.archive-index__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.archive-index__brand-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 1;
+  color: var(--color-text);
+}
+
+.archive-index__brand-sub {
+  font-family: var(--font-body);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  opacity: 0.55;
+}
+
+/* ---- Lista de proyectos ---- */
+
+.archive-index__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.archive-index__row-link {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 28px;
+  /* línea fina en el color clave — así cada opción se remarca contra el
+     fondo negro y no se pierde. Sin border-top: lo pone el borde inferior
+     de la fila anterior, así la unión entre dos filas es una sola línea,
+     nunca doble. */
+  border: 1px solid var(--color-accent);
+  border-top: none;
+  transition: background-color 0.25s var(--ease-default), border-color 0.25s var(--ease-default);
+}
+
+.archive-index__list > .archive-index__row:first-child .archive-index__row-link {
+  border-top: 1px solid var(--color-accent);
+}
+
+.archive-index__row-title {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--color-bg);
+  transition: color 0.2s var(--ease-default);
+}
+
+/* el bold va solo en el nombre de marca, no en la categoría que sigue */
+.archive-index__row-brand {
+  font-weight: 700;
+}
+
+.archive-index__row-sep {
+  opacity: 0.45;
+  margin-inline: 2px;
+}
+
+.archive-index__row-desc {
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--color-accent);
+  /* se arma en 2 renglones cuando el texto es más largo (Kaio, Skyblock) —
+     eso evita que empuje la columna del título y quede todo apretado */
+  /* el salto de línea de Kaio/Skyblock ahora es explícito (<br> en el HTML),
+     no depende de dónde el texto rompe por ancho — así que esto es solo un
+     techo de seguridad para textos futuros más largos */
+  max-width: 32ch;
+  text-align: right;
+  transition: color 0.2s var(--ease-default);
+}
+
+.archive-index__row-arrow {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-accent);
+  border-radius: 4px;
+  color: var(--color-accent);
+  font-size: 16px;
+  line-height: 1;
+  transition: background-color 0.25s var(--ease-default), color 0.25s var(--ease-default);
+}
+
+/* "según donde pongas el cursor, se pinta esa opción del color clave
+   y el texto invierte a negro para contrastar" — igual que la caja archive.
+   :active también, para que al tocar en mobile (sin cursor/hover) se
+   vea el mismo pintado mientras el dedo sigue apoyado. */
+.archive-index__row-link:hover,
+.archive-index__row-link:focus-visible,
+.archive-index__row-link:active {
+  background-color: var(--color-accent);
+  outline: none;
+}
+
+.archive-index__row-link:hover .archive-index__row-title,
+.archive-index__row-link:hover .archive-index__row-desc,
+.archive-index__row-link:focus-visible .archive-index__row-title,
+.archive-index__row-link:focus-visible .archive-index__row-desc,
+.archive-index__row-link:active .archive-index__row-title,
+.archive-index__row-link:active .archive-index__row-desc {
+  color: var(--color-text);
+}
+
+.archive-index__row-link:hover .archive-index__row-arrow,
+.archive-index__row-link:focus-visible .archive-index__row-arrow,
+.archive-index__row-link:active .archive-index__row-arrow {
+  background-color: transparent;
+  border-color: var(--color-text);
+  color: var(--color-text);
+}
+
+.archive-index__row--empty .archive-index__row-arrow {
+  opacity: 0.4;
+}
+
+/* Las filas vacías no tienen adónde ir: no se pintan al pasar el cursor,
+   para que quede claro que no hay contenido para ver ahí. */
+.archive-index__row--empty .archive-index__row-link:hover,
+.archive-index__row--empty .archive-index__row-link:focus-visible,
+.archive-index__row--empty .archive-index__row-link:active {
+  background-color: transparent;
+  box-shadow: none;
+  cursor: default;
+}
+
+.archive-index__row--empty .archive-index__row-link:hover .archive-index__row-arrow,
+.archive-index__row--empty .archive-index__row-link:focus-visible .archive-index__row-arrow,
+.archive-index__row--empty .archive-index__row-link:active .archive-index__row-arrow {
+  background-color: transparent;
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  opacity: 0.4;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 767px) {
+  .archive-index {
+    border-radius: 110px 110px 0 0 / 22px 22px 0 0;
+    margin-top: -22px;
+    padding: 100px var(--container-padding-mobile) 80px;
+  }
+
+  .archive-index__panel {
+    grid-template-columns: 1fr;
+  }
+
+  .archive-index__left {
+    border-radius: 20px 20px 0 0;
+    min-height: unset;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  /* en mobile "archive" es lo único que queda de la marca — sin el
+     subtítulo, y más grande para que se note bien */
+  .archive-index__brand-sub {
+    display: none;
+  }
+
+  .archive-index__brand-name {
+    font-size: 48px;
+  }
+
+  .archive-index__row-link {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      'title arrow'
+      'desc  arrow';
+    row-gap: 4px;
+    padding: 18px 20px;
+  }
+
+  .archive-index__row-title {
+    grid-area: title;
+    font-size: 12px;
+  }
+
+  .archive-index__row-desc {
+    grid-area: desc;
+    white-space: normal;
+    text-align: left;
+    opacity: 0.8;
+  }
+
+  .archive-index__row-arrow {
+    grid-area: arrow;
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+}

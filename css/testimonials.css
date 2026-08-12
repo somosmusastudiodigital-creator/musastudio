@@ -1,0 +1,157 @@
+/* ==========================================================================
+   Testimonios — máquina + stack de tarjetas, unidos en una sola pieza.
+   Al tocar la máquina, la tarjeta activa sale hacia arriba y se desvanece,
+   mientras la siguiente avanza a su lugar.
+   ========================================================================== */
+
+.testimonials {
+  background-color: var(--color-text);
+  padding-block: 16px;
+  overflow: hidden;
+}
+
+.testimonials__stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ---- Stack de tarjetas ---- */
+
+.testimonials__cards {
+  position: relative;
+  width: min(636px, 92vw);
+  /* tarjetas recortadas sin relleno transparente abajo — proporción real
+     ~1878×750 */
+  aspect-ratio: 1878 / 750;
+  /* se mete un poco dentro de la abertura de la máquina, no solo "toca" el
+     borde — simula que la tarjeta sale de ahí adentro */
+  margin-bottom: -100px;
+  /* un pilín corrida a la izquierda respecto del centro */
+  margin-left: -18px;
+  z-index: 2;
+  list-style: none;
+}
+
+/* Estado por defecto = "en cola" (fuera de vista, arriba y desvanecida).
+   Es también el punto de llegada de la tarjeta que se acaba de tocar, así
+   que ese recorrido (0 → 1 → 2 → 3 → acá) es lo que crea el "sale hacia
+   arriba" — todas las paradas del camino tienen transform propio, nada
+   salta directo a invisible sin recorrer el camino. */
+.testimonials__card {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.45s var(--ease-default), opacity 0.45s var(--ease-default);
+  will-change: transform, opacity;
+  /* solo translateY, sin scale — que se sienta como un deslizamiento
+     limpio hacia arriba, no un achicamiento */
+  transform: translateY(-70px);
+  opacity: 0;
+  z-index: 36;
+  pointer-events: none;
+}
+
+.testimonials__card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* ancladas abajo: así el borde inferior real de cada tarjeta (no un
+     espacio vacío del recuadro) es lo que se apoya sobre la máquina */
+  object-position: bottom;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.35));
+}
+
+/* Profundidad del stack — JS asigna data-stack="0,1,2,3..." según el orden
+   actual. 0 = tarjeta activa (arriba de todo, apoyada sobre la máquina). */
+.testimonials__card[data-stack='0'] {
+  transform: translateY(0);
+  opacity: 1;
+  z-index: 40;
+}
+
+.testimonials__card[data-stack='1'] {
+  transform: translateY(-10px);
+  opacity: 0.9;
+  z-index: 39;
+}
+
+.testimonials__card[data-stack='2'] {
+  transform: translateY(-20px);
+  opacity: 0.7;
+  z-index: 38;
+}
+
+.testimonials__card[data-stack='3'] {
+  transform: translateY(-30px);
+  opacity: 0.45;
+  z-index: 37;
+}
+
+/* ---- Máquina ---- */
+
+.testimonials__machine {
+  position: relative;
+  z-index: 1;
+  /* un poco más ancha que las tarjetas a propósito: las tarjetas quedan
+     centradas y por encima, simulando que salen de la máquina */
+  width: min(660px, 96vw);
+  /* baja la máquina sola (las tarjetas no se tocan) para que coincida
+     con la posición actual de las tarjetas sin taparla de más */
+  margin-top: 74px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.2s var(--ease-default);
+}
+
+.testimonials__machine:hover,
+.testimonials__machine:focus-visible {
+  transform: translateY(-2px);
+}
+
+.testimonials__machine:active {
+  transform: translateY(1px);
+}
+
+.testimonials__machine img {
+  width: 100%;
+  display: block;
+  object-fit: contain;
+  /* anclada arriba: el borde superior real de la máquina (no un espacio
+     vacío del recuadro) es lo que recibe a la tarjeta */
+  object-position: top;
+}
+
+.testimonials__hint {
+  /* negativo: la máquina también tiene aire vacío debajo del dibujo real,
+     así que hace falta acercar el texto a mano */
+  margin-top: -60px;
+  font-family: var(--font-body);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-bg);
+  opacity: 0.4;
+  text-align: center;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 767px) {
+  .testimonials {
+    padding-block: 16px;
+  }
+
+  .testimonials__cards {
+    width: min(360px, 90vw);
+    margin-bottom: -88px;
+    margin-left: -10px;
+  }
+
+  .testimonials__machine {
+    margin-top: 70px;
+  }
+}

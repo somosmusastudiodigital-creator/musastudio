@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — musa studio</title>
+  <meta name="description" content="Musa Studio — estudio creativo fundado por Maira Leiva y Evelin Alegre. Identidad visual, diseño y estrategia digital.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/contact-modal.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <!-- ============================== NAVBAR ============================== -->
+  <header class="navbar">
+    <div class="navbar__inner container">
+      <button class="navbar__toggle" aria-expanded="false" aria-controls="navbar-menu" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="navbar__menu" id="navbar-menu">
+        <a class="navbar__link" href="index.html">Home</a>
+
+        <div class="navbar__group">
+          <div class="navbar__item navbar__item--dropdown">
+            <a class="navbar__link" href="projects.html">Projects</a>
+            <div class="navbar__dropdown">
+              <a class="navbar__dropdown-link" href="kaiobluerose.html">Kaiobluerose</a>
+              <a class="navbar__dropdown-link" href="sofi.html">Sofi</a>
+              <a class="navbar__dropdown-link" href="skyblock.html">Skyblock</a>
+              <a class="navbar__dropdown-link" href="essenza.html">Essenza</a>
+              <a class="navbar__dropdown-link" href="connect.html">Connect</a>
+              <a class="navbar__dropdown-link" href="hache.html">Hache</a>
+              <a class="navbar__dropdown-link navbar__dropdown-link--flyers" href="projects.html#flyers">Flyers/Posters</a>
+            </div>
+          </div>
+          <a class="navbar__link" href="services.html">Services</a>
+          <a class="navbar__link is-active" href="about.html">About</a>
+          <a class="navbar__link" href="#contact" data-modal-trigger="contact">Contact</a>
+        </div>
+
+        <a class="navbar__link navbar__link--tienda" href="tienda.html">Tienda</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============================== MODAL CONTACTO ============================== -->
+  <div class="contact-modal" id="contact-modal" aria-hidden="true">
+    <div class="contact-modal__panel" role="dialog" aria-modal="true" aria-label="Contacto">
+      <button class="contact-modal__close" type="button" data-modal-close aria-label="Cerrar">✕</button>
+
+      <div class="contact-modal__grid">
+        <div class="contact-modal__col">
+          <div class="contact-modal__brand">
+            <span class="contact-modal__r">®</span>
+            <img class="contact-modal__mark" src="assets/images/logo.png" alt="musa studio">
+          </div>
+          <span class="contact-modal__est">Est. 05 Jul 2025</span>
+          <address class="contact-modal__address">
+            Rosario, Santa Fe<br>
+            Resistencia, Chaco
+          </address>
+        </div>
+
+        <div class="contact-modal__col">
+          <span class="contact-modal__label">Contact</span>
+          <a class="contact-modal__phone" href="tel:+5493644146482">+54 9 3644146482</a>
+          <a class="contact-modal__email" href="mailto:somosmusa.studiodigital@gmail.com">somosmusa.studiodigital@gmail.com</a>
+        </div>
+
+        <div class="contact-modal__col contact-modal__col--right">
+          <span class="contact-modal__label">Social</span>
+          <div class="contact-modal__social-grid">
+            <a class="contact-modal__social" href="https://www.instagram.com/musa______studio/" target="_blank" rel="noopener">Instagram</a>
+            <span class="contact-modal__social contact-modal__social--soon" aria-disabled="true">Behance</span>
+            <a class="contact-modal__social" href="https://ar.pinterest.com/somosmusastudio/" target="_blank" rel="noopener">Pinterest</a>
+            <a class="contact-modal__social" href="https://open.spotify.com/playlist/0AwYGRo3HM85vfNB5bU7Uz" target="_blank" rel="noopener">Spotify</a>
+            <a class="contact-modal__social" href="https://www.tiktok.com/@somosmusa.studio" target="_blank" rel="noopener">Tiktok</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-modal__watermark" aria-hidden="true">contact us</div>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ============================== HERO SPLIT ============================== -->
+    <section class="about-hero" aria-label="Presentación">
+      <div class="about-hero__left">
+        <span class="about-hero__eyebrow">Est. 2025 — Tu apoyo creativo</span>
+
+        <div class="about-hero__body">
+          <span class="about-hero__label">Who we are</span>
+          <h1 class="about-hero__title">about.</h1>
+          <p class="about-hero__desc">Desarrollo con precisión, criterio y propósito visual.</p>
+        </div>
+
+        <span class="about-hero__tag">[ Creado para crear ]</span>
+      </div>
+
+      <div class="about-hero__right">
+        <!-- Reemplazá por tu isotipo (ver assets/images/about/README.txt) -->
+        <img src="assets/images/about/logo-mark.png" alt="Isotipo musa studio" loading="lazy">
+      </div>
+    </section>
+
+    <!-- ============================== SECCIÓN INFORMATIVA ============================== -->
+    <section class="about-info" aria-label="Sobre el estudio">
+     <div class="about-info__inner">
+
+      <div class="about-info__col about-info__col--bio">
+        <p><strong>MUSA STUDIO ©</strong> — Es un estudio creativo fundado por Maira Leiva y Evelin Alegre en Julio, 2025.</p>
+        <p>Funcionamos como el aliado visual y estratégico de profesionales, emprendedores y marcas que buscan diferenciarse, construir un concepto sólido y potenciar su presencia en el ecosistema digital.</p>
+        <p><strong>MAIRA LEIVA</strong> — Lidera la dirección artística y la ejecución visual: es la mente meticulosa detrás de las herramientas de diseño, dedicada a plasmar conceptos auténticos y dar forma a la identidad de cada cliente.</p>
+        <p><strong>EVELIN ALEGRE</strong> — Es la mente logística y estratégica: coordina los procesos, la gestión, la relación directa con clientes y la estructura operativa para que cada proyecto trascienda con orden y propósito.</p>
+        <p><strong>ENFOQUE</strong> — Nos especializamos en sectores que exigen distinción y confianza, abarcando desde el ámbito de la salud y estética, hasta el sector corporativo.</p>
+      </div>
+
+      <div class="about-info__col about-info__col--photo">
+        <span class="about-info__name about-info__name--top about-info__name--right">Mai</span>
+        <!-- Reemplazá por la foto con tu socia (ver assets/images/about/README.txt) -->
+        <img src="assets/images/about/equipo.png" alt="Maira y Evelin, fundadoras de musa studio" loading="lazy">
+        <span class="about-info__name about-info__name--bottom">Eve</span>
+        <span class="about-info__tag">[ Creado para crear ]</span>
+      </div>
+
+      <div class="about-info__col about-info__col--data">
+        <p class="about-info__brand">MUSA STUDIO ©</p>
+        <p><strong>LOCATION</strong> — Rosario, Santa Fe &amp; Resistencia, Chaco, Argentina.</p>
+        <p><strong>SERVICES</strong> — Identidad Visual, Social Media Management, Diseño de Redes Sociales, Diseño Gráfico &amp; Edición de Contenido.</p>
+        <p><strong>MAIRA LEIVA</strong> — Dirección Creativa &amp; Diseño Visual</p>
+        <p><strong>EVELIN ALEGRE</strong> — Estrategia, Gestión &amp; Operaciones</p>
+        <p><strong>SECTORS</strong> — Salud, Estética &amp; Servicios Corporativos.</p>
+
+        <span class="about-info__clock" id="art-clock">--:--:-- — ART</span>
+      </div>
+
+     </div>
+    </section>
+
+  </main>
+
+  <script src="js/main.js" defer></script>
+  <script src="js/about-clock.js" defer></script>
+  <script src="js/contact-modal.js" defer></script>
+</body>
+</html>

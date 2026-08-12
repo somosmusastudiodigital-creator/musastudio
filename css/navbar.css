@@ -1,0 +1,258 @@
+/* ==========================================================================
+   Navbar — fija, ancho completo, se mantiene en scroll
+   ========================================================================== */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--nav-height);
+  z-index: 1000;
+  background-color: var(--color-bg);
+  border-bottom: 1px solid rgba(var(--color-text-rgb), 0.12);
+}
+
+.navbar__inner {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navbar__menu {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.navbar__group {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.navbar__link {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  position: relative;
+  padding-block: 4px;
+}
+
+.navbar__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 1px;
+  background-color: var(--color-text);
+  transition: width 0.25s var(--ease-default);
+}
+
+.navbar__link:hover::after,
+.navbar__link.is-active::after {
+  width: 100%;
+}
+
+.navbar__link--tienda {
+  font-weight: 700;
+}
+
+/* ---- Dropdown "Projects" (hover, solo desktop) ---- */
+
+.navbar__item--dropdown {
+  position: relative;
+}
+
+.navbar__dropdown {
+  /* pegado (top:100%, sin margin) a propósito: un margin acá crearía un
+     hueco "muerto" entre el link y el menú donde se pierde el :hover al
+     mover el mouse en diagonal, y con pointer-events:none el clic no
+     llega. El aire visual de antes ahora es padding-top, así el área
+     hover-able queda continua desde el link hasta el último ítem. */
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background-color: var(--color-bg);
+  border: 1px solid rgba(var(--color-text-rgb), 0.12);
+  border-radius: 10px;
+  padding: 20px 8px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 190px;
+  box-shadow: 0 16px 36px rgba(var(--color-text-rgb), 0.18);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s var(--ease-default), transform 0.2s var(--ease-default), visibility 0s linear 0.2s;
+  z-index: 1100;
+}
+
+.navbar__item--dropdown:hover .navbar__dropdown,
+.navbar__item--dropdown:focus-within .navbar__dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+  transition: opacity 0.2s var(--ease-default), transform 0.2s var(--ease-default);
+}
+
+.navbar__dropdown-link {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  white-space: nowrap;
+  padding: 9px 14px;
+  border-radius: 6px;
+  transition: background-color 0.15s var(--ease-default);
+}
+
+.navbar__dropdown-link:hover,
+.navbar__dropdown-link:focus-visible {
+  background-color: var(--color-accent);
+  outline: none;
+}
+
+.navbar__dropdown-link--flyers {
+  margin-top: 6px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(var(--color-text-rgb), 0.12);
+}
+
+/* El dropdown es un recurso de mouse/hover — en mobile "Projects" es
+   un link normal, sin submenú. */
+@media (max-width: 767px) {
+  .navbar__dropdown {
+    display: none;
+  }
+}
+
+/* ---- Variante oscura (páginas con hero negro, ej. Projects) ---- */
+
+.navbar--dark {
+  background-color: var(--color-text);
+  border-bottom-color: rgba(var(--color-bg-rgb), 0.12);
+}
+
+.navbar--dark .navbar__link {
+  color: var(--color-bg);
+}
+
+.navbar--dark .navbar__link::after {
+  background-color: var(--color-bg);
+}
+
+.navbar--dark .navbar__toggle span {
+  background-color: var(--color-bg);
+}
+
+@media (max-width: 767px) {
+  .navbar--dark .navbar__menu {
+    background-color: var(--color-text);
+  }
+}
+
+/* ---- Toggle mobile (hamburger) ---- */
+
+.navbar__toggle {
+  display: none;
+  position: absolute;
+  /* right:0 ignoraba el padding del contenedor y quedaba pegada al
+     borde real de la pantalla — se posiciona relativo al borde de la
+     caja, no de su padding */
+  right: var(--container-padding-mobile);
+  top: 50%;
+  transform: translateY(-50%);
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  z-index: 1001;
+}
+
+.navbar__toggle span {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background-color: var(--color-text);
+  transition: transform 0.25s var(--ease-default), opacity 0.25s var(--ease-default);
+}
+
+.navbar__toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.navbar__toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+.navbar__toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .navbar__group,
+  .navbar__menu {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar {
+    height: var(--nav-height-mobile);
+  }
+
+  .navbar__toggle {
+    display: flex;
+  }
+
+  .navbar__menu {
+    position: fixed;
+    inset: 0;
+    top: var(--nav-height-mobile);
+    height: calc(100svh - var(--nav-height-mobile));
+    background-color: var(--color-bg);
+    flex-direction: column;
+    /* a la derecha a propósito: queda cerca del pulgar de la mano que
+       sostiene el teléfono y tocó la hamburguesa, también a la derecha */
+    align-items: flex-end;
+    text-align: right;
+    justify-content: center;
+    gap: 28px;
+    padding: var(--container-padding-mobile);
+    transform: translateX(100%);
+    transition: transform 0.35s var(--ease-default);
+    visibility: hidden;
+  }
+
+  .navbar__menu.is-open {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  .navbar__menu .navbar__group {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 22px;
+  }
+
+  .navbar__menu .navbar__link {
+    font-size: 22px;
+  }
+}

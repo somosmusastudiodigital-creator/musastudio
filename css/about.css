@@ -1,0 +1,244 @@
+/* ==========================================================================
+   Página About — hero split (texto / logo) + sección informativa
+   ========================================================================== */
+
+/* ---- Hero split ---- */
+
+.about-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100svh;
+}
+
+.about-hero__left {
+  background-color: var(--color-accent);
+  padding: calc(var(--nav-height) + 40px) 48px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.about-hero__eyebrow {
+  font-family: var(--font-body);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  opacity: 0.55;
+}
+
+.about-hero__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 18px;
+}
+
+.about-hero__label {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.about-hero__title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(48px, 6vw, 88px);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.about-hero__desc {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  max-width: 26ch;
+  opacity: 0.7;
+}
+
+.about-hero__tag {
+  align-self: center;
+  font-family: var(--font-body);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.45;
+}
+
+.about-hero__right {
+  background-color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+}
+
+.about-hero__right img {
+  width: 100%;
+  max-width: 420px;
+  object-fit: contain;
+}
+
+/* ---- Sección informativa ---- */
+
+/* El fondo negro cubre TODO el ancho de la sección — el contenido adentro
+   (.about-info__inner) es lo único que se centra con márgenes anchos. Si el
+   max-width fuera acá, lo de afuera del centro se vería del color de la
+   página (mal), no negro. */
+.about-info {
+  background-color: var(--color-text);
+  padding-block: 90px 110px;
+}
+
+.about-info__inner {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1.1fr;
+  gap: 48px;
+  max-width: 1160px;
+  margin-inline: auto;
+  padding-inline: 64px;
+}
+
+.about-info__col {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.about-info__col p {
+  font-family: var(--font-body);
+  font-size: 11.5px;
+  line-height: 1.7;
+  text-align: justify;
+  color: var(--color-bg);
+  opacity: 0.8;
+}
+
+.about-info__col p strong,
+.about-info__col p .label {
+  opacity: 1;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.about-info__brand {
+  font-weight: 700;
+  opacity: 1 !important;
+}
+
+/* ---- Columna central: foto ---- */
+
+.about-info__col--photo {
+  align-items: center;
+  text-align: center;
+}
+
+.about-info__name {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-style: italic;
+  color: var(--color-bg);
+  opacity: 0.7;
+}
+
+.about-info__name--top {
+  align-self: flex-start;
+}
+
+.about-info__name--bottom {
+  align-self: flex-start;
+}
+
+.about-info__name--right {
+  align-self: flex-end;
+}
+
+.about-info__col--photo img {
+  width: 100%;
+  max-width: 280px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.about-info__tag {
+  font-family: var(--font-body);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-bg);
+  opacity: 0.4;
+}
+
+/* ---- Columna derecha: reloj ---- */
+
+.about-info__clock {
+  margin-top: 8px;
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  color: var(--color-bg);
+  opacity: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .about-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .about-hero__left {
+    padding: calc(var(--nav-height) + 32px) 32px 40px;
+    gap: 40px;
+  }
+
+  .about-hero__right {
+    padding: 32px;
+  }
+
+  .about-info__inner {
+    grid-template-columns: 1fr;
+    gap: 56px;
+    padding-inline: var(--container-padding);
+  }
+
+  .about-info__col--photo {
+    order: -1;
+  }
+}
+
+@media (max-width: 767px) {
+  .about-hero__left {
+    padding: calc(var(--nav-height-mobile) + 24px) var(--container-padding-mobile) 32px;
+  }
+
+  .about-info {
+    padding-block: 64px 72px;
+  }
+
+  .about-info__inner {
+    gap: 44px;
+    padding-inline: var(--container-padding-mobile);
+  }
+
+  /* en mobile, orden natural del HTML: texto (bio) → foto → texto (datos
+     + reloj) — se revierte el order:-1 que en tablet adelanta la foto */
+  .about-info__col--photo {
+    order: 0;
+  }
+
+  /* la etiqueta debajo de la foto de Eve/Mai no va en mobile */
+  .about-info__col--photo .about-info__tag {
+    display: none;
+  }
+}

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>musa studio</title>
+  <meta name="description" content="musa studio — estudio digital. Editorial Brutalism mezclado con Raw Industrial &amp; Y2K Archive.">
+
+  <!-- Montserrat (self-host disponible a pedido) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/manifesto.css">
+  <link rel="stylesheet" href="css/archive-index.css">
+  <link rel="stylesheet" href="css/carousel.css">
+  <link rel="stylesheet" href="css/testimonials.css">
+  <link rel="stylesheet" href="css/closing.css">
+  <link rel="stylesheet" href="css/contact-modal.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <!-- ============================== NAVBAR ============================== -->
+  <header class="navbar">
+    <div class="navbar__inner container">
+      <button class="navbar__toggle" aria-expanded="false" aria-controls="navbar-menu" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="navbar__menu" id="navbar-menu">
+        <a class="navbar__link is-active" href="index.html">Home</a>
+
+        <div class="navbar__group">
+          <div class="navbar__item navbar__item--dropdown">
+            <a class="navbar__link" href="projects.html">Projects</a>
+            <div class="navbar__dropdown">
+              <a class="navbar__dropdown-link" href="kaiobluerose.html">Kaiobluerose</a>
+              <a class="navbar__dropdown-link" href="sofi.html">Sofi</a>
+              <a class="navbar__dropdown-link" href="skyblock.html">Skyblock</a>
+              <a class="navbar__dropdown-link" href="essenza.html">Essenza</a>
+              <a class="navbar__dropdown-link" href="connect.html">Connect</a>
+              <a class="navbar__dropdown-link" href="hache.html">Hache</a>
+              <a class="navbar__dropdown-link navbar__dropdown-link--flyers" href="projects.html#flyers">Flyers/Posters</a>
+            </div>
+          </div>
+          <a class="navbar__link" href="services.html">Services</a>
+          <a class="navbar__link" href="about.html">About</a>
+          <a class="navbar__link" href="#contact" data-modal-trigger="contact">Contact</a>
+        </div>
+
+        <a class="navbar__link navbar__link--tienda" href="tienda.html">Tienda</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============================== MODAL CONTACTO ============================== -->
+  <div class="contact-modal" id="contact-modal" aria-hidden="true">
+    <div class="contact-modal__panel" role="dialog" aria-modal="true" aria-label="Contacto">
+      <button class="contact-modal__close" type="button" data-modal-close aria-label="Cerrar">✕</button>
+
+      <div class="contact-modal__grid">
+        <div class="contact-modal__col">
+          <div class="contact-modal__brand">
+            <span class="contact-modal__r">®</span>
+            <img class="contact-modal__mark" src="assets/images/logo.png" alt="musa studio">
+          </div>
+          <span class="contact-modal__est">Est. 05 Jul 2025</span>
+          <address class="contact-modal__address">
+            Rosario, Santa Fe<br>
+            Resistencia, Chaco
+          </address>
+        </div>
+
+        <div class="contact-modal__col">
+          <span class="contact-modal__label">Contact</span>
+          <a class="contact-modal__phone" href="tel:+5493644146482">+54 9 3644146482</a>
+          <a class="contact-modal__email" href="mailto:somosmusa.studiodigital@gmail.com">somosmusa.studiodigital@gmail.com</a>
+        </div>
+
+        <div class="contact-modal__col contact-modal__col--right">
+          <span class="contact-modal__label">Social</span>
+          <div class="contact-modal__social-grid">
+            <a class="contact-modal__social" href="https://www.instagram.com/musa______studio/" target="_blank" rel="noopener">Instagram</a>
+            <span class="contact-modal__social contact-modal__social--soon" aria-disabled="true">Behance</span>
+            <a class="contact-modal__social" href="https://ar.pinterest.com/somosmusastudio/" target="_blank" rel="noopener">Pinterest</a>
+            <a class="contact-modal__social" href="https://open.spotify.com/playlist/0AwYGRo3HM85vfNB5bU7Uz" target="_blank" rel="noopener">Spotify</a>
+            <a class="contact-modal__social" href="https://www.tiktok.com/@somosmusa.studio" target="_blank" rel="noopener">Tiktok</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-modal__watermark" aria-hidden="true">contact us</div>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ============================== HERO (video) ============================== -->
+    <section class="hero" id="home" aria-label="Video de presentación">
+      <!--
+        Reemplazá el src por tu archivo final (ver assets/video/README.txt).
+        poster: primer frame o imagen de carga mientras el video no está listo.
+      -->
+      <video
+        class="hero__video"
+        autoplay
+        muted
+        loop
+        playsinline
+        webkit-playsinline="true"
+        preload="auto"
+        poster="assets/video/hero-poster.jpg"
+      >
+        <source src="assets/video/banner%201.mp4" type="video/mp4">
+        <p class="hero__fallback">musa studio</p>
+      </video>
+    </section>
+
+    <!-- ============================== MUSASTUDIO / MANIFESTO ============================== -->
+    <section class="manifesto" id="manifesto" data-reveal aria-label="Manifiesto musa studio">
+
+      <div class="manifesto__fold" aria-hidden="true"></div>
+
+      <!-- 10 imágenes distribuidas alrededor en tamaños variados. Ajustá
+           --pos-x / --pos-y (posición %) y --pos-w (ancho) a gusto. -->
+      <div class="manifesto__reveal-layer" aria-hidden="true">
+        <img class="reveal-img" style="--pos-x:14%; --pos-y:18%; --pos-w:200px;" src="assets/images/reveal/8.png" alt="" loading="lazy">
+        <img class="reveal-img" style="--pos-x:83%; --pos-y:15%; --pos-w:170px;" src="assets/images/reveal/9.png" alt="" loading="lazy">
+        <img class="reveal-img" style="--pos-x:9%; --pos-y:62%; --pos-w:220px;" src="assets/images/reveal/10.png" alt="" loading="lazy">
+        <img class="reveal-img" style="--pos-x:88%; --pos-y:66%; --pos-w:190px;" src="assets/images/reveal/11.png" alt="" loading="lazy">
+        <img class="reveal-img" style="--pos-x:30%; --pos-y:85%; --pos-w:160px;" src="assets/images/reveal/12.png" alt="" loading="lazy">
+        <img class="reveal-img" style="--pos-x:70%; --pos-y:88%; --pos-w:150px;" src="assets/images/reveal/IMG_3309.JPG" alt="" loading="lazy">
+        <img class="reveal-img" style="--pos-x:22%; --pos-y:42%; --pos-w:130px;" src="assets/images/reveal/diseno-10.png" alt="" loading="lazy">
+        <img class="reveal-img" style="--pos-x:78%; --pos-y:44%; --pos-w:170px;" src="assets/images/reveal/PORTF-SERVICES.png" alt="" loading="lazy">
+        <img class="reveal-img" style="--pos-x:50%; --pos-y:80%; --pos-w:150px;" src="assets/images/reveal/7.png" alt="" loading="lazy">
+        <img class="reveal-img" style="--pos-x:40%; --pos-y:14%; --pos-w:120px;" src="assets/images/reveal/ELEM PORTFOLIO.png" alt="" loading="lazy">
+      </div>
+
+      <div class="manifesto__mask" aria-hidden="true"></div>
+
+      <div class="manifesto__content">
+
+        <span class="manifesto__tag">[ MUSA STUDIO _ MANIFIESTO v01 ]</span>
+
+        <!-- TODO: acá va el copy nuevo del manifiesto cuando lo pases -->
+        <div class="manifesto__scroll-block">
+          <h2 class="manifesto__wordmark">musastudio</h2>
+        </div>
+
+        <span class="manifesto__tag manifesto__tag--footer">[ ESTADO / PROCESO ] _ [ ORIGEN / CREATIVIDAD ]</span>
+
+      </div>
+
+      <!-- El isotipo (1.png) va SOBRE el wordmark, no detrás: usa las mismas
+           coordenadas de revelo (--mx/--my/--reveal-r heredadas de .manifesto)
+           para aparecer justo donde está el cursor, por encima de todo. -->
+      <div class="manifesto__logo-reveal" aria-hidden="true">
+        <img src="assets/images/reveal/1.png" alt="" loading="lazy">
+      </div>
+    </section>
+
+    <!-- ============================== ARCHIVE / PROYECTOS DESTACADOS ============================== -->
+    <section class="archive-index" id="archive" aria-label="Últimos proyectos destacados">
+      <div class="archive-index__panel">
+
+        <div class="archive-index__left">
+          <span class="archive-index__label">[ Últimos proyectos destacados ]</span>
+
+          <div class="archive-index__brand">
+            <span class="archive-index__brand-name">archive</span>
+            <span class="archive-index__brand-sub">[ Creado para crear ]</span>
+          </div>
+        </div>
+
+        <ul class="archive-index__list">
+          <li class="archive-index__row">
+            <a class="archive-index__row-link" href="kaiobluerose.html">
+              <span class="archive-index__row-title"><span class="archive-index__row-brand">Kaiobluerose</span> <span class="archive-index__row-sep">|</span> Tatuajes &amp; Piercings</span>
+              <span class="archive-index__row-desc">Identidad visual, contenido &amp;<br>social media management</span>
+              <span class="archive-index__row-arrow" aria-hidden="true">↗︎</span>
+            </a>
+          </li>
+          <li class="archive-index__row">
+            <a class="archive-index__row-link" href="sofi.html">
+              <span class="archive-index__row-title"><span class="archive-index__row-brand">Sofi</span> <span class="archive-index__row-sep">|</span> Makeup &amp; Cejas</span>
+              <span class="archive-index__row-desc">Identidad visual</span>
+              <span class="archive-index__row-arrow" aria-hidden="true">↗︎</span>
+            </a>
+          </li>
+          <li class="archive-index__row">
+            <a class="archive-index__row-link" href="skyblock.html">
+              <span class="archive-index__row-title"><span class="archive-index__row-brand">Skyblock</span> <span class="archive-index__row-sep">|</span> Ciberseguridad</span>
+              <span class="archive-index__row-desc">Identidad visual y diseño<br>de redes sociales.</span>
+              <span class="archive-index__row-arrow" aria-hidden="true">↗︎</span>
+            </a>
+          </li>
+          <!-- Filas vacías: slots listos para los próximos proyectos destacados.
+               Este índice es solo para destacados — el resto de los
+               proyectos (Essenza, Hache, Connect...) viven en el índice
+               completo de la página Projects, no acá.
+               Completá título/desc/href, o borrá el <li> si no las querés todavía. -->
+          <li class="archive-index__row archive-index__row--empty">
+            <a class="archive-index__row-link" href="projects.html">
+              <span class="archive-index__row-title"></span>
+              <span class="archive-index__row-desc"></span>
+              <span class="archive-index__row-arrow" aria-hidden="true">↗︎</span>
+            </a>
+          </li>
+          <li class="archive-index__row archive-index__row--empty">
+            <a class="archive-index__row-link" href="projects.html">
+              <span class="archive-index__row-title"></span>
+              <span class="archive-index__row-desc"></span>
+              <span class="archive-index__row-arrow" aria-hidden="true">↗︎</span>
+            </a>
+          </li>
+        </ul>
+
+      </div>
+    </section>
+
+    <!-- ============================== BANNER PROMOCIONAL (carrusel) ============================== -->
+    <section class="carousel" id="promo" aria-label="Banner promocional" aria-roledescription="carrusel">
+      <!-- Agregá/sacá <figure class="carousel__slide"> + su .carousel__dot según
+           cuántas imágenes vayas a subir. Reemplazá los src por tus archivos
+           (ver assets/images/carousel/README.txt). -->
+      <div class="carousel__track">
+        <figure class="carousel__slide is-active">
+          <img src="assets/images/carousel/3.png" alt="" loading="lazy">
+        </figure>
+        <figure class="carousel__slide">
+          <img src="assets/images/carousel/13.png" alt="" loading="lazy">
+        </figure>
+        <figure class="carousel__slide">
+          <img src="assets/images/carousel/ad6.png" alt="" loading="lazy">
+        </figure>
+      </div>
+
+      <button class="carousel__arrow carousel__arrow--prev" aria-label="Slide anterior">‹</button>
+      <button class="carousel__arrow carousel__arrow--next" aria-label="Slide siguiente">›</button>
+
+      <div class="carousel__dots" role="tablist" aria-label="Seleccionar slide">
+        <button class="carousel__dot is-active" aria-label="Ir al slide 1" aria-selected="true"></button>
+        <button class="carousel__dot" aria-label="Ir al slide 2" aria-selected="false"></button>
+        <button class="carousel__dot" aria-label="Ir al slide 3" aria-selected="false"></button>
+      </div>
+    </section>
+
+    <!-- ============================== TESTIMONIOS ============================== -->
+    <section class="testimonials" id="testimonios" aria-label="Testimonios de clientes">
+      <div class="testimonials__stage">
+
+        <!-- Reemplazá los src por tus PNG (ver assets/images/testimonials/README.txt).
+             Para sumar más tarjetas, copiá un <li> más: el JS las toma solas. -->
+        <ul class="testimonials__cards">
+          <li class="testimonials__card" data-stack="0">
+            <img src="assets/images/testimonials/6.png" alt="Testimonio" loading="lazy">
+          </li>
+          <li class="testimonials__card" data-stack="1">
+            <img src="assets/images/testimonials/7.png" alt="Testimonio" loading="lazy">
+          </li>
+          <li class="testimonials__card" data-stack="2">
+            <img src="assets/images/testimonials/8.png" alt="Testimonio" loading="lazy">
+          </li>
+          <li class="testimonials__card" data-stack="3">
+            <img src="assets/images/testimonials/9.png" alt="Testimonio" loading="lazy">
+          </li>
+          <li class="testimonials__card" data-stack="4">
+            <img src="assets/images/testimonials/10.png" alt="Testimonio" loading="lazy">
+          </li>
+          <li class="testimonials__card" data-stack="5">
+            <img src="assets/images/testimonials/11.png" alt="Testimonio" loading="lazy">
+          </li>
+          <li class="testimonials__card" data-stack="6">
+            <img src="assets/images/testimonials/12.png" alt="Testimonio" loading="lazy">
+          </li>
+          <li class="testimonials__card" data-stack="7">
+            <img src="assets/images/testimonials/13.png" alt="Testimonio" loading="lazy">
+          </li>
+        </ul>
+
+        <button class="testimonials__machine" type="button" aria-label="Ver siguiente testimonio">
+          <img src="assets/images/testimonials/maquina.png" alt="" aria-hidden="true">
+        </button>
+
+        <span class="testimonials__hint">Tocá la máquina para ver más</span>
+      </div>
+    </section>
+
+    <!-- ============================== CIERRE ============================== -->
+    <section class="closing" id="contacto" aria-label="Cierre">
+
+      <div class="closing__main">
+
+        <div class="closing__col closing__col--brand">
+          <span class="closing__wordmark">musastudio</span>
+          <p class="closing__founded">Fundado por Maira Leiva &amp; Evelin Alegre en Julio 2025.</p>
+          <span class="closing__tag">[Creado para crear]</span>
+        </div>
+
+        <div class="closing__col closing__col--contact">
+          <span class="closing__label">Contact</span>
+          <a class="closing__link" href="tel:+5493644146482">+54 9 3644146482</a>
+          <a class="closing__link" href="mailto:somosmusa.studiodigital@gmail.com">somosmusa.studiodigital@gmail.com</a>
+        </div>
+
+        <div class="closing__col closing__col--social">
+          <span class="closing__label">Social</span>
+          <a class="closing__link" href="https://www.instagram.com/musa______studio/" target="_blank" rel="noopener">Instagram</a>
+          <span class="closing__link closing__link--soon" aria-disabled="true">Behance</span>
+          <a class="closing__link" href="https://ar.pinterest.com/somosmusastudio/" target="_blank" rel="noopener">Pinterest</a>
+          <a class="closing__link" href="https://open.spotify.com/playlist/0AwYGRo3HM85vfNB5bU7Uz" target="_blank" rel="noopener">Spotify</a>
+          <a class="closing__link" href="https://www.tiktok.com/@somosmusa.studio" target="_blank" rel="noopener">Tiktok</a>
+        </div>
+
+      </div>
+
+      <footer class="closing__footer">
+        <span class="closing__location">Rosario, Santa Fe AR<br>Resistencia, Chaco AR</span>
+        <span>© 2026 Musa Studio. All rights reserved.</span>
+        <a href="#home" class="closing__totop">
+          <span class="closing__totop-label">Volver arriba</span>
+          <span class="closing__totop-icon" aria-hidden="true">↑</span>
+        </a>
+      </footer>
+    </section>
+
+  </main>
+
+  <script src="js/main.js" defer></script>
+  <script src="js/reveal.js" defer></script>
+  <script src="js/carousel.js" defer></script>
+  <script src="js/testimonials.js" defer></script>
+  <script src="js/contact-modal.js" defer></script>
+</body>
+</html>

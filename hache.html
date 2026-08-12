@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hache — musa studio</title>
+  <meta name="description" content="Hache — fotografía y contenido para un showroom de indumentaria masculina, por musa studio.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/project-detail.css">
+  <link rel="stylesheet" href="css/contact-modal.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <!-- ============================== NAVBAR (oscura) ============================== -->
+  <header class="navbar navbar--dark">
+    <div class="navbar__inner container">
+      <button class="navbar__toggle" aria-expanded="false" aria-controls="navbar-menu" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="navbar__menu" id="navbar-menu">
+        <a class="navbar__link" href="index.html">Home</a>
+
+        <div class="navbar__group">
+          <div class="navbar__item navbar__item--dropdown">
+            <a class="navbar__link is-active" href="projects.html">Projects</a>
+            <div class="navbar__dropdown">
+              <a class="navbar__dropdown-link" href="kaiobluerose.html">Kaiobluerose</a>
+              <a class="navbar__dropdown-link" href="sofi.html">Sofi</a>
+              <a class="navbar__dropdown-link" href="skyblock.html">Skyblock</a>
+              <a class="navbar__dropdown-link" href="essenza.html">Essenza</a>
+              <a class="navbar__dropdown-link" href="connect.html">Connect</a>
+              <a class="navbar__dropdown-link" href="hache.html">Hache</a>
+              <a class="navbar__dropdown-link navbar__dropdown-link--flyers" href="projects.html#flyers">Flyers/Posters</a>
+            </div>
+          </div>
+          <a class="navbar__link" href="services.html">Services</a>
+          <a class="navbar__link" href="about.html">About</a>
+          <a class="navbar__link" href="#contact" data-modal-trigger="contact">Contact</a>
+        </div>
+
+        <a class="navbar__link navbar__link--tienda" href="tienda.html">Tienda</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============================== MODAL CONTACTO ============================== -->
+  <div class="contact-modal" id="contact-modal" aria-hidden="true">
+    <div class="contact-modal__panel" role="dialog" aria-modal="true" aria-label="Contacto">
+      <button class="contact-modal__close" type="button" data-modal-close aria-label="Cerrar">✕</button>
+
+      <div class="contact-modal__grid">
+        <div class="contact-modal__col">
+          <div class="contact-modal__brand">
+            <span class="contact-modal__r">®</span>
+            <img class="contact-modal__mark" src="assets/images/logo.png" alt="musa studio">
+          </div>
+          <span class="contact-modal__est">Est. 05 Jul 2025</span>
+          <address class="contact-modal__address">
+            Rosario, Santa Fe<br>
+            Resistencia, Chaco
+          </address>
+        </div>
+
+        <div class="contact-modal__col">
+          <span class="contact-modal__label">Contact</span>
+          <a class="contact-modal__phone" href="tel:+5493644146482">+54 9 3644146482</a>
+          <a class="contact-modal__email" href="mailto:somosmusa.studiodigital@gmail.com">somosmusa.studiodigital@gmail.com</a>
+        </div>
+
+        <div class="contact-modal__col contact-modal__col--right">
+          <span class="contact-modal__label">Social</span>
+          <div class="contact-modal__social-grid">
+            <a class="contact-modal__social" href="https://www.instagram.com/musa______studio/" target="_blank" rel="noopener">Instagram</a>
+            <span class="contact-modal__social contact-modal__social--soon" aria-disabled="true">Behance</span>
+            <a class="contact-modal__social" href="https://ar.pinterest.com/somosmusastudio/" target="_blank" rel="noopener">Pinterest</a>
+            <a class="contact-modal__social" href="https://open.spotify.com/playlist/0AwYGRo3HM85vfNB5bU7Uz" target="_blank" rel="noopener">Spotify</a>
+            <a class="contact-modal__social" href="https://www.tiktok.com/@somosmusa.studio" target="_blank" rel="noopener">Tiktok</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-modal__watermark" aria-hidden="true">contact us</div>
+    </div>
+  </div>
+
+  <main class="project-detail">
+    <div class="project-detail__grid">
+
+      <!-- ============================== INFO (fija, 40%, blanco) ==============================
+           Acá hay un único panel: no cambia en ningún momento del scroll. -->
+      <aside class="project-detail__info">
+
+        <div class="project-detail__panel is-active" data-panel="0">
+          <span class="project-detail__dates">Ago 25</span>
+
+          <h1 class="project-detail__brand">Hache</h1>
+          <span class="project-detail__category">Showroom</span>
+
+          <ul class="project-detail__tags">
+            <li>Fotografía &amp; Contenido</li>
+          </ul>
+
+          <p class="project-detail__text">HACHE, un showroom de indumentaria masculina con local físico, buscaba renovar su presencia digital y comunicar la calidad de sus colecciones con una estética más dinámica, moderna y alineada a las tendencias actuales de consumo visual.</p>
+        </div>
+
+      </aside>
+
+      <!-- ============================== MEDIA (scroll, 60%, negro) ==============================
+           Un solo capítulo: las 7 imágenes, una debajo de la otra. -->
+      <div class="project-detail__media">
+
+        <div class="project-detail__chapter" data-chapter="0">
+
+          <figure class="project-detail__item">
+            <img src="assets/images/projects/hache/1.png" alt="" loading="lazy">
+          </figure>
+
+          <figure class="project-detail__item">
+            <img src="assets/images/projects/hache/2.png" alt="" loading="lazy">
+          </figure>
+
+          <figure class="project-detail__item">
+            <img src="assets/images/projects/hache/3.png" alt="" loading="lazy">
+          </figure>
+
+          <figure class="project-detail__item">
+            <img src="assets/images/projects/hache/4.png" alt="" loading="lazy">
+          </figure>
+
+          <figure class="project-detail__item">
+            <img src="assets/images/projects/hache/5.png" alt="" loading="lazy">
+          </figure>
+
+          <figure class="project-detail__item">
+            <img src="assets/images/projects/hache/6.png" alt="" loading="lazy">
+          </figure>
+
+          <figure class="project-detail__item">
+            <img src="assets/images/projects/hache/7.png" alt="" loading="lazy">
+          </figure>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ============================== CIERRE ============================== -->
+    <div class="project-detail__signoff-bar">
+      <span class="project-detail__signoff">Hecho en Musa Studio<br>[Tu apoyo creativo]</span>
+    </div>
+
+  </main>
+
+  <script src="js/main.js" defer></script>
+  <script src="js/contact-modal.js" defer></script>
+  <script src="js/project-carousel.js" defer></script>
+  <script src="js/project-panels.js" defer></script>
+</body>
+</html>

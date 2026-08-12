@@ -1,0 +1,74 @@
+/* ==========================================================================
+   Página Services — grid de tarjetas sobre fondo acento
+   ========================================================================== */
+
+.services-page {
+  background-color: var(--color-accent);
+  min-height: 100svh;
+}
+
+/* ---- Grid de tarjetas ---- */
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  padding: calc(var(--nav-height) + 56px) var(--container-padding) 100px;
+}
+
+.service-card {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-text);
+  border-radius: 16px;
+  padding: 28px 24px 32px;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.service-card__num {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--color-text);
+}
+
+.service-card__title {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 1.25;
+}
+
+.service-card__desc {
+  margin-top: auto;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: calc(var(--nav-height) + 40px) var(--container-padding) 80px;
+  }
+}
+
+@media (max-width: 767px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    padding: calc(var(--nav-height-mobile) + 32px) var(--container-padding-mobile) 64px;
+    gap: 16px;
+  }
+
+  .service-card {
+    min-height: unset;
+  }
+}

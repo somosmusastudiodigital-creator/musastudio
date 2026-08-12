@@ -1,0 +1,221 @@
+/* ==========================================================================
+   Sección "musastudio" — wordmark + manifiesto + reveal de imágenes al cursor
+   ========================================================================== */
+
+@property --reveal-r {
+  syntax: '<length>';
+  /* true: el JS setea esta variable en .manifesto (la sección), y tanto
+     .manifesto__mask como .manifesto__logo-reveal la necesitan por
+     herencia. Con inherits:false (como estaba) nunca llegaba y el radio
+     quedaba fijo en 0 — por eso no se veía nada del revelado. */
+  inherits: true;
+  initial-value: 0px;
+}
+
+.manifesto {
+  position: relative;
+  z-index: 0; /* crea su propio stacking context: sin esto, los z-index
+    internos (hasta 4) se filtran al contexto raíz y terminan pintando por
+    encima de .archive-index, que la superpone desde abajo */
+  overflow: hidden;
+  padding-block: 90px;
+  background-color: var(--color-bg);
+  background-image: url('../assets/images/reveal/fondo%20textura.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Línea de pliegue central, simulando el papel doblado al medio */
+.manifesto__fold {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 60px;
+  height: 100%;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(var(--color-text-rgb), 0.05) 46%,
+    rgba(var(--color-text-rgb), 0.09) 50%,
+    rgba(var(--color-text-rgb), 0.05) 54%,
+    transparent 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ---- Capa de imágenes a revelar (debajo de todo) ---- */
+
+.manifesto__reveal-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s var(--ease-default);
+}
+
+/* Red de seguridad: sin esta clase (que JS agrega/saca en hover), las
+   imágenes quedan invisibles pase lo que pase con el mask-image de abajo. */
+.manifesto.is-reveal-active .manifesto__reveal-layer {
+  opacity: 1;
+}
+
+.reveal-img {
+  position: absolute;
+  left: var(--pos-x);
+  top: var(--pos-y);
+  width: var(--pos-w, 200px);
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  background-color: rgba(var(--color-text-rgb), 0.15);
+}
+
+/* ---- Isotipo — vive POR ENCIMA del wordmark, no detrás ----
+   Usa el mismo agujero circular (mismas --mx/--my/--reveal-r, heredadas de
+   .manifesto) pero pintado en una capa con z-index mayor al del contenido,
+   así aparece delante de "musastudio" en vez de chocar/taparse con él. */
+.manifesto__logo-reveal {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s var(--ease-default);
+  /* Radio extra (+150px) sobre el de la máscara de papel: la imagen del
+     logo está corrida hacia arriba (ver .manifesto__logo-reveal img), así
+     que este agujero necesita ser más grande para que llegue a cubrirla,
+     si no el corrimiento la saca del área visible. */
+  -webkit-mask-image: radial-gradient(
+    circle calc(var(--reveal-r, 0px) + 150px) at var(--mx, 50%) var(--my, 50%),
+    black 0%,
+    black 70%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    circle calc(var(--reveal-r, 0px) + 150px) at var(--mx, 50%) var(--my, 50%),
+    black 0%,
+    black 70%,
+    transparent 100%
+  );
+}
+
+.manifesto.is-reveal-active .manifesto__logo-reveal {
+  opacity: 1;
+}
+
+.manifesto__logo-reveal img {
+  width: 90px;
+  object-fit: contain;
+  /* corrido hacia arriba para no quedar pegado sobre "musastudio" */
+  transform: translateY(-130px);
+}
+
+/* ---- Capa "papel" que se recorta alrededor del cursor ---- */
+
+.manifesto__mask {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background-color: var(--color-bg);
+  /* Misma imagen que el fondo de .manifesto — esta capa es la que se ve en
+     todo momento (tapa las imágenes de revelo); donde el mouse "abre" el
+     agujero, se ve la imagen de revelo limpia, sin textura encima. */
+  background-image: url('../assets/images/reveal/fondo%20textura.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-mask-image: radial-gradient(
+    circle var(--reveal-r, 0px) at var(--mx, 50%) var(--my, 50%),
+    transparent 0%,
+    transparent 70%,
+    black 100%
+  );
+  mask-image: radial-gradient(
+    circle var(--reveal-r, 0px) at var(--mx, 50%) var(--my, 50%),
+    transparent 0%,
+    transparent 70%,
+    black 100%
+  );
+  transition: --reveal-r 0.4s var(--ease-default);
+  pointer-events: none;
+}
+
+/* ---- Contenido: wordmark centrado + manifiesto corrido detrás ---- */
+
+.manifesto__content {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+/* El wordmark centrado; sección chica y despejada (sin párrafo de fondo
+   por ahora — vuelve cuando llegue el copy nuevo). */
+.manifesto__scroll-block {
+  position: relative;
+  width: 100%;
+  min-height: 64vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.manifesto__wordmark {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(28px, 4.5vw, 60px);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  text-align: center;
+}
+
+.manifesto__tag {
+  font-family: var(--font-body);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.45;
+  text-align: center;
+}
+
+.manifesto__tag--footer {
+  font-size: 9px;
+  opacity: 0.3;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 767px) {
+  .manifesto {
+    padding-block: 64px;
+  }
+
+  .manifesto__content {
+    gap: 20px;
+  }
+
+  .manifesto__scroll-block {
+    min-height: 48vh;
+  }
+
+  .manifesto__fold {
+    width: 30px;
+  }
+
+  .reveal-img {
+    width: 120px;
+  }
+}
