@@ -24,6 +24,10 @@
   max-width: 40ch;
 }
 
+.solutions__cta {
+  white-space: nowrap;
+}
+
 .solutions__wordmark {
   font-family: var(--font-display);
   font-weight: 800;
