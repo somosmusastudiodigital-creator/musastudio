@@ -87,3 +87,42 @@ document.addEventListener('touchstart', function () {}, { passive: true });
     document.addEventListener('click', retryOnInteraction, { once: true });
   }
 })();
+
+/* ==========================================================================
+   Toast — aviso breve para links que todavía no llevan a ningún lado
+   (ej. "Tienda"): en vez de romper la navegación con un 404, muestra un
+   mensaje flotante que se desvanece solo.
+   ========================================================================== */
+(function () {
+  'use strict';
+
+  const triggers = document.querySelectorAll('[data-soon]');
+  if (!triggers.length) return;
+
+  let toast = null;
+  let hideTimer = null;
+
+  const showToast = (message) => {
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.className = 'toast';
+      document.body.appendChild(toast);
+    }
+
+    toast.textContent = message;
+    clearTimeout(hideTimer);
+
+    requestAnimationFrame(() => toast.classList.add('is-visible'));
+
+    hideTimer = setTimeout(() => {
+      toast.classList.remove('is-visible');
+    }, 2200);
+  };
+
+  triggers.forEach((el) => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      showToast(el.getAttribute('data-soon') || 'Muy pronto');
+    });
+  });
+})();
