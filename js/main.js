@@ -96,9 +96,6 @@ document.addEventListener('touchstart', function () {}, { passive: true });
 (function () {
   'use strict';
 
-  const triggers = document.querySelectorAll('[data-soon]');
-  if (!triggers.length) return;
-
   let toast = null;
   let hideTimer = null;
 
@@ -116,13 +113,15 @@ document.addEventListener('touchstart', function () {}, { passive: true });
 
     hideTimer = setTimeout(() => {
       toast.classList.remove('is-visible');
-    }, 2200);
+    }, 3800);
   };
 
-  triggers.forEach((el) => {
-    el.addEventListener('click', (e) => {
-      e.preventDefault();
-      showToast(el.getAttribute('data-soon') || 'Muy pronto');
-    });
+  // delegado en document (no en cada link) para que funcione sin importar
+  // en qué orden se inicialicen los demás scripts del navbar
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('[data-soon]');
+    if (!trigger) return;
+    e.preventDefault();
+    showToast(trigger.getAttribute('data-soon') || 'Muy pronto');
   });
 })();
