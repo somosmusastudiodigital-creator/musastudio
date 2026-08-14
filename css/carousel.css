@@ -97,6 +97,15 @@
    ========================================================================== */
 
 @media (max-width: 767px) {
+  /* franja extra abajo para que los dots no tapen parte de la imagen */
+  .carousel {
+    padding-bottom: 32px;
+  }
+
+  .carousel__dots {
+    bottom: 8px;
+  }
+
   .carousel__arrow {
     font-size: 26px;
   }

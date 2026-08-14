@@ -6,7 +6,7 @@
 
 .testimonials {
   background-color: var(--color-text);
-  padding-block: 48px;
+  padding-block: 72px;
   overflow: hidden;
 }
 
@@ -142,7 +142,7 @@
 
 @media (max-width: 767px) {
   .testimonials {
-    padding-block: 32px;
+    padding-block: 48px;
   }
 
   .testimonials__cards {

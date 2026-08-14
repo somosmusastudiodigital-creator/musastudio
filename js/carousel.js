@@ -15,7 +15,7 @@
 
   if (slides.length < 2) return; // nada que rotar
 
-  const AUTOPLAY_MS = 4500;
+  const AUTOPLAY_MS = 6500;
   let index = slides.findIndex((slide) => slide.classList.contains('is-active'));
   if (index < 0) index = 0;
   let timer = null;
