@@ -126,13 +126,32 @@
 }
 
 @media (max-width: 767px) {
-  .services-grid {
-    grid-template-columns: 1fr;
-    padding: calc(var(--nav-height-mobile) + 32px) var(--container-padding-mobile) 64px;
-    gap: 16px;
+  /* cada tarjeta ocupa toda la pantalla y queda "enganchada" al
+     deslizar — así el swipe siempre termina mostrando una tarjeta
+     completa, nunca un pedacito de la anterior o la siguiente */
+  .services-page {
+    height: 100svh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: y mandatory;
   }
 
+  .services-grid {
+    grid-template-columns: 1fr;
+    padding: calc(var(--nav-height-mobile) + 24px) var(--container-padding-mobile) 24px;
+    gap: 24px;
+  }
+
+  .service-card {
+    min-height: calc(100svh - var(--nav-height-mobile) - 48px);
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  /* la foto crece para ocupar todo el espacio libre de la tarjeta,
+     en vez de quedar con una proporción fija más chica */
   .service-card__media {
-    aspect-ratio: 16 / 10;
+    flex: 1;
+    aspect-ratio: unset;
   }
 }
