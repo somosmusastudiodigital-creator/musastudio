@@ -138,11 +138,18 @@
     min-height: calc(100svh - var(--nav-height-mobile) - 48px);
   }
 
-  /* la foto crece para ocupar todo el espacio libre de la tarjeta,
-     en vez de quedar con una proporción fija más chica */
+  /* alto fijo e igual en las 5 — si dependiera de "flex:1" cada tarjeta
+     mediría distinto según cuánto texto tenga el título/descripción */
   .service-card__media {
-    flex: 1;
+    flex: none;
+    height: 58vh;
     aspect-ratio: unset;
+  }
+
+  /* a la derecha para no chocar con el título, que ahora es más grande */
+  .service-card__num {
+    left: auto;
+    right: 16px;
   }
 
   .service-card__title {
