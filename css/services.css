@@ -154,16 +154,21 @@
   .service-card__body {
     min-height: 0;
     overflow-y: auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 
-  /* a la derecha para no chocar con el título, que ahora es más grande */
   .service-card__num {
-    left: auto;
-    right: 16px;
+    display: none;
   }
 
   .service-card__title {
     font-size: 21px;
+  }
+
+  .service-card__desc {
+    margin-top: 0;
   }
 
   .service-card__desc {
