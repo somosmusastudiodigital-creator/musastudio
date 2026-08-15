@@ -132,18 +132,28 @@
     gap: 24px;
   }
 
-  /* tarjeta grande, casi de pantalla completa, pero con scroll libre
-     (sin scroll-snap) */
+  /* alto FIJO (no mínimo) e igual en las 5 — así el trío foto + texto +
+     botón siempre reparte exactamente el mismo espacio total, sin
+     importar cuánto texto tenga cada servicio */
   .service-card {
-    min-height: calc(100svh - var(--nav-height-mobile) - 48px);
+    height: calc(100svh - var(--nav-height-mobile) - 48px);
   }
 
   /* alto fijo e igual en las 5 — si dependiera de "flex:1" cada tarjeta
      mediría distinto según cuánto texto tenga el título/descripción */
   .service-card__media {
     flex: none;
-    height: 58vh;
+    height: 52vh;
     aspect-ratio: unset;
+  }
+
+  /* con el alto de la tarjeta y de la foto ya fijos, lo que sobra para
+     título+texto es siempre la misma medida en las 5 — si algún texto
+     fuera más largo de lo que entra, scrollea adentro en vez de romper
+     el tamaño parejo de las tarjetas */
+  .service-card__body {
+    min-height: 0;
+    overflow-y: auto;
   }
 
   /* a la derecha para no chocar con el título, que ahora es más grande */
